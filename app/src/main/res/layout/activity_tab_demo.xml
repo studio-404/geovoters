@@ -33,15 +33,12 @@
 
 
 
-    <android.support.v4.view.ViewPager
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/mainContent"
-        android:src="@mipmap/ic_action_back"
-        android:layout_marginTop="100dp"
-        android:clickable="true">
 
-    </android.support.v4.view.ViewPager>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/myListView"
+            android:layout_marginTop="100dp" />
 
     <Button
         android:layout_width="30dp"
