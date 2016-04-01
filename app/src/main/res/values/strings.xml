@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Geo Voters</string>
+    <string name="action_settings">Settings</string>
+    <string name="projecttitle">Geo Voters</string>
+    <string name="momxmareblis_saxeli">მომხმარებლის სახელი:</string>
+    <string name="paroli">პაროლი:</string>
+    <string name="sistemashi_shesvla">სისტემაში შესვლა</string>
+    <string name="registracia">გაიარეთ რეგისტრაცია</string>
+    <string name="parolisagdgena">პაროლის აღდგენა</string>
+    <string name="geovotersiconattribute">geovoters_icon</string>
+    <string name="welcomeText">მიმდინარეობს სერვერთან დაკავშირება…</string>
+    <string name="numbers">…</string>
+    <string name="title_activity_welcomesigneduser">Welcomesigneduser</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragmentname3">Entertaiment</string>
+    <string name="fragmentname2">Economics</string>
+    <string name="fragmentname1">Politics</string>
+    <string name="backiconDesc">BackIconOnToolBar</string>
+    <string name="editprofileicondescription">profile edit</string>
+    <string name="addquestionpoll">add question poll</string>
+    <string name="title_activity_edit_profile">EditProfile</string>
+    <string name="profileActivityTitle">პროფილი</string>
+    <string name="usersimage">Users Image</string>
+    <string name="title_activity_profile_activity">profile_activity</string>
+    <string name="imeicodeLabel">Imei კოდი: *</string>
+    <string name="saxeligvari_label">სახელი გვარი:</string>
+    <string name="emailLabel">ელ-ფოსტა:</string>
+    <string name="sqesiLabel">სქესი: </string>
+    <string name="mamrobitiLabel">მამრობითი</string>
+    <string name="mdedrobitiLabel">მდედრობითი</string>
+    <string name="ganaxlebaBattonText">განახლება</string>
+    <string name="pleaseWait">გთხოვთ დაელოდოთ...</string>
+    <string name="question">დღეს რომ საპარლამენტო არჩევნები იყოს რომელ პარტიას მისცემდით ხმას? \n\n მონაწილე: 25</string>
+    <string name="xmismicema">ხმის მიცემა</string>
+</resources>

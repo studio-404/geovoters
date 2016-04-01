@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="ge.studio404.geovoters.profile_activity">
+
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="ge.studio404.geovoters.profile_activity"
+        tools:showIn="@layout/activity_profile_activity"
+        android:background="#f2f2f2">
+
+
+        <android.support.v7.widget.Toolbar
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="60dp"
+            android:background="#3ba4da"
+            android:minHeight="?attr/actionBarSize"
+            android:title="@string/profileActivityTitle"
+            android:id="@+id/toolbar"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        </android.support.v7.widget.Toolbar>
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/button2"
+            android:background="@mipmap/back_buttom"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            style="?android:attr/borderlessButtonStyle"
+            android:onClick="gotoTabDemo" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/imeicodeLabel"
+            android:id="@+id/textView"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/toolbar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="18sp"
+            android:textColor="#ff0000" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:id="@+id/imeicodeText"
+            android:layout_marginTop="10dp"
+            android:background="#ffffff"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:editable="false"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:inputType="text"
+            android:textSize="20sp"
+            android:enabled="false" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/saxeligvari_label"
+            android:id="@+id/textView2"
+            android:layout_below="@+id/imeicodeText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="18sp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:id="@+id/saxeligvariText"
+            android:layout_below="@+id/textView2"
+            android:layout_alignLeft="@+id/textView2"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:background="#ffffff"
+            android:textSize="20sp"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/emailLabel"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/saxeligvariText"
+            android:layout_alignLeft="@+id/saxeligvariText"
+            android:layout_alignStart="@+id/saxeligvariText"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="18sp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:id="@+id/elfostaText"
+            android:layout_below="@+id/textView3"
+            android:layout_alignLeft="@+id/textView3"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#ffffff"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/sqesiLabel"
+            android:id="@+id/textView4"
+            android:layout_below="@+id/elfostaText"
+            android:layout_alignLeft="@+id/elfostaText"
+            android:layout_alignStart="@+id/elfostaText"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="18sp" />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal"
+            android:id="@+id/radioGroup"
+            android:layout_below="@+id/textView4"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mamrobitiRadio"
+                android:text="@string/mamrobitiLabel"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mdedrobitiRadio"
+                android:text="@string/mdedrobitiLabel"
+                android:layout_marginLeft="20dp" />
+        </RadioGroup>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ganaxlebaBattonText"
+            android:textSize="16sp"
+            android:layout_below="@+id/radioGroup"
+            android:layout_alignLeft="@+id/radioGroup"
+            android:layout_alignStart="@+id/radioGroup"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:onClick="updateProfile"
+            android:layout_alignParentEnd="false" />
+
+    </RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

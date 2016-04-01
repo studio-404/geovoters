@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ge.studio404.geovoters.tabDemo">
+
+        <android.support.v7.widget.Toolbar
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="60dp"
+            android:background="#3ba4da"
+            android:minHeight="?attr/actionBarSize"
+            android:id="@+id/toolbar"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.design.widget.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#6ebfe8"
+            android:id="@+id/tabLayout"
+            app:tabMode="scrollable"
+            app:tabGravity="fill"
+            android:layout_marginTop="50dp"
+            style="@style/MyCustomTabLayout">
+
+        </android.support.design.widget.TabLayout>
+
+
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mainContent"
+        android:src="@mipmap/ic_action_back"
+        android:layout_marginTop="100dp"
+        android:clickable="true">
+
+    </android.support.v4.view.ViewPager>
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/button2"
+        android:background="@mipmap/back_buttom"
+        android:layout_marginLeft="10dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:onClick="gotoMainActivity"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/button3"
+        style="?android:attr/borderlessButtonStyle"
+        android:background="@mipmap/icon_add_question"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp"
+        android:onClick="gotoeditprofile"
+        android:layout_marginTop="10dp" />
+
+
+</RelativeLayout>
