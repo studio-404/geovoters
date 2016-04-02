@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="#f2f2f2">
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
         android:layout_width="match_parent"
@@ -19,17 +18,36 @@
         android:textSize="18sp"
         android:text="@string/question" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:id="@+id/button4"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/tarigi"
+        android:id="@+id/tarigi"
         android:layout_below="@+id/questionText"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_marginLeft="10dp"
+        android:textSize="14sp"
+        android:gravity="left|center_vertical"
+        android:background="#ffffff"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/monawile"
+        android:id="@+id/monawile"
+        android:layout_alignTop="@+id/tarigi"
+        android:layout_toRightOf="@+id/tarigi"
+        android:layout_toEndOf="@+id/tarigi"
+        android:background="#ffffff"
+        android:textSize="14sp"
+        android:gravity="center_vertical|right"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="0dp"
-        android:background="#3ba4da"
-        android:text="@string/xmismicema"
-        android:textColor="#ffffff"
-        android:textSize="18sp" />
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp" />
+
 </RelativeLayout>

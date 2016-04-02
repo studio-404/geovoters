@@ -30,7 +30,9 @@
     <string name="mamrobitiLabel">მამრობითი</string>
     <string name="mdedrobitiLabel">მდედრობითი</string>
     <string name="ganaxlebaBattonText">განახლება</string>
-    <string name="pleaseWait">გთხოვთ დაელოდოთ...</string>
-    <string name="question">დღეს რომ საპარლამენტო არჩევნები იყოს რომელ პარტიას მისცემდით ხმას? \n\n მონაწილე: 25</string>
+    <string name="pleaseWait">გთხოვთ დაელოდოთ…</string>
+    <string name="question">დღეს რომ საპარლამენტო არჩევნები იყოს რომელ პარტიას მისცემდით ხმას?</string>
     <string name="xmismicema">ხმის მიცემა</string>
+    <string name="tarigi">თარიღი: 20 თებ 2016</string>
+    <string name="monawile">მონაწილე: 205</string>
 </resources>
