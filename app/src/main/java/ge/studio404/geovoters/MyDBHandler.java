@@ -17,8 +17,10 @@ public class MyDBHandler extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         String geovote_users = "CREATE TABLE IF NOT EXISTS geovote_users ( id INTEGER PRIMARY KEY AUTOINCREMENT, registered_date TEXT, registered_ip TEXT, username TEXT, namelname TEXT, email TEXT, mobile TEXT, gender TEXT, address TEXT );";
         db.execSQL(geovote_users);
-        String geovote_cataloglist = "CREATE TABLE IF NOT EXISTS geovote_cataloglist ( id INTEGER PRIMARY KEY AUTOINCREMENT, catalogidx TEXT, catalogtitle TEXT );";
+        String geovote_cataloglist = "CREATE TABLE IF NOT EXISTS geovote_cataloglist ( id INTEGER PRIMARY KEY AUTOINCREMENT, catalogidx INTEGER, catalogtitle TEXT );";
         db.execSQL(geovote_cataloglist);
+//        String geovote_itemlists = "CREATE TABLE IF NOT EXISTS geovote_itemlists ( id INTEGER PRIMARY KEY AUTOINCREMENT, idx INTEGET, catidx INTEGER, date INTEGER, question TEXT, usersin INTEGER );";
+//        db.execSQL(geovote_itemlists);
     }
 
     @Override
@@ -26,6 +28,7 @@ public class MyDBHandler extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS geovote_users");
         onCreate(db);
     }
+
 
     // add user if not exists
     public void addUser(String username){
@@ -63,6 +66,21 @@ public class MyDBHandler extends SQLiteOpenHelper{
         return outText;
     }
 
+    public Integer selectCataloglistIdx(Integer tabid){
+        int out = 0;
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT catalogidx FROM geovote_cataloglist ORDER BY id ASC LIMIT "+tabid+",1";
+        Cursor c = db.rawQuery(query, null);
+
+        while (c.moveToNext()){
+            out = c.getInt(c.getColumnIndex("catalogidx"));
+        }
+        db.close();
+        c.close();
+
+        return out;
+    }
+
     public void updateProfile(String namelname, String email, String gender){
         SQLiteDatabase db = getWritableDatabase();
         String query = "UPDATE geovote_users SET namelname='"+namelname+"', email='"+email+"', gender='"+gender+"' ";
@@ -72,7 +90,7 @@ public class MyDBHandler extends SQLiteOpenHelper{
 
     public String[] selectCatalogList(){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT catalogtitle FROM geovote_cataloglist", null);
+        Cursor c = db.rawQuery("SELECT catalogtitle FROM geovote_cataloglist ORDER BY id ASC", null);
         int cnt = c.getCount();
         String[] column1 = new String[cnt];
         if(c.moveToFirst()){
@@ -87,12 +105,13 @@ public class MyDBHandler extends SQLiteOpenHelper{
         return column1;
     }
 
-    public void insertCatalogList(String arrayl){
+    public void insertCatalogList(int idx, String arrayl){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT id FROM geovote_cataloglist WHERE catalogtitle='" + arrayl + "'", null);
+        Cursor c = db.rawQuery("SELECT id FROM geovote_cataloglist WHERE catalogidx='" + idx + "'", null);
         int cnt = c.getCount();
         if(cnt<=0) {
             ContentValues values = new ContentValues();
+            values.put("catalogidx", idx);
             values.put("catalogtitle", arrayl);
             db.insert("geovote_cataloglist", null, values);
             db.close();

@@ -48,39 +48,37 @@ public class checkWebService extends IntentService {
         scheduleTaskExecutor.scheduleAtFixedRate(new Runnable() {
             public void run() {
                 try {
-                    if(dbHandler.checkuser(deviceid)){
-                        Log.i("WOW_MESSAGE","USER EXISTS");
-                    }else{
+                    if (dbHandler.checkuser(deviceid)) {
+                        Log.i("WOW_MESSAGE", "USER EXISTS");
+                    } else {
                         dbHandler.addUser(deviceid);
                     }
 
-                    URL url = new URL("http://geovoters.404.ge/ge/pageinfo?imei="+deviceid);
-                    connection = (HttpURLConnection)url.openConnection();
+                    URL url = new URL("http://geovoters.404.ge/ge/pageinfo?imei=" + deviceid);
+                    connection = (HttpURLConnection) url.openConnection();
                     connection.connect();
                     InputStream stream = connection.getInputStream();
-
-
-
                     reader = new BufferedReader(new InputStreamReader(stream));
 
                     buffer = new StringBuffer();
                     String line;
-                    while ((line = reader.readLine()) != null){
+                    while ((line = reader.readLine()) != null) {
                         buffer.append(line);
                     }
                     JSONObject jsonObject = new JSONObject(buffer.toString());
 
-                    i.putExtra("MessageFrom",jsonObject.getString("PeopleRegisterd"));
+                    i.putExtra("MessageFrom", jsonObject.getString("PeopleRegisterd"));
                     i.putExtra("WelcomeText", jsonObject.getString("WelcomeText"));
 
                     JSONArray arr = new JSONArray(jsonObject.getString("cataloglist"));
 
-                    for(int i = 0; i < arr.length(); i++){
+                    for (int i = 0; i < arr.length(); i++) {
+                        int idx = arr.getJSONObject(i).getInt("idx");
                         String io = arr.getJSONObject(i).getString("title");
-                        dbHandler.insertCatalogList(io);
+                        dbHandler.insertCatalogList(idx, io);
                     }
 
-                } catch (Exception e){
+                } catch (Exception e) {
                     Log.i("WOW_MESSAGE", "Error: " + e);
                 }
 
