@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -27,18 +28,17 @@ public class tabDemo extends AppCompatActivity {
     Toolbar toolbar;
     TabLayout tabLayout;
     MyDBHandler dbHandler;
-    ListView giosListView;
+    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_PROGRESS);
         setContentView(R.layout.activity_tab_demo);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        giosListView = (ListView)findViewById(R.id.myListView);
-        ListAdapter giosListAdapter = new custom_adapter(this, new ArrayList<String>());
-        giosListView.setAdapter(giosListAdapter);
+
         new MyTask().execute(0);
 
         dbHandler = new MyDBHandler(this, "geovote.db", null, 1);
@@ -53,6 +53,7 @@ public class tabDemo extends AppCompatActivity {
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                adapter.clear();
                 new MyTask().execute(tabLayout.getSelectedTabPosition());
             }
 
@@ -71,22 +72,22 @@ public class tabDemo extends AppCompatActivity {
     }
 
     class MyTask extends AsyncTask<Integer, String, Void>{
-
-        private ArrayAdapter<String> adapter;
-
         BufferedReader reader = null;
         StringBuffer buffer;
-
+        private int count;
+        JSONArray arr;
         @Override
         protected void onPreExecute() {
+            ListView giosListView = (ListView)findViewById(R.id.myListView);
+            ListAdapter giosListAdapter = new custom_adapter(tabDemo.this, new ArrayList<String>());
+            giosListView.setAdapter(giosListAdapter);
             adapter = (ArrayAdapter<String>)giosListView.getAdapter();
+            setProgressBarIndeterminate(false);
+            setProgressBarVisibility(true);
         }
 
         @Override
         protected Void doInBackground(Integer... params) {
-
-            ArrayList<String> datax = new ArrayList<>();
-
             try {
                 URL url = new URL("http://geovoters.404.ge/ge/pageinfo");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -101,25 +102,31 @@ public class tabDemo extends AppCompatActivity {
                 }
                 JSONObject jsonObject = new JSONObject(buffer.toString());
 
-                JSONArray arr = new JSONArray(jsonObject.getString("cataloglistitems"));
-                Log.i("taskBG", params[0]+" tab param");
+                arr = new JSONArray(jsonObject.getString("cataloglistitems"));
                 int catidxFromDb = dbHandler.selectCataloglistIdx(params[0]);
+                ArrayList<String> listItems = new ArrayList<>();
 
                 for (int i = 0; i < arr.length(); i++) {
                     int catidx = arr.getJSONObject(i).getInt("catidx");
-//                    int idx = arr.getJSONObject(i).getInt("idx");
-                    int datex = arr.getJSONObject(i).getInt("datex");
+                    //int idx = arr.getJSONObject(i).getInt("idx");
+                    String datex = arr.getJSONObject(i).getString("datex");
                     String question = arr.getJSONObject(i).getString("question");
                     int usersin = arr.getJSONObject(i).getInt("usersin");
-                    Log.i("taskBG", catidxFromDb+" catalogidx");
+                    Log.i("taskBG", catidxFromDb + " catalogidx "+catidx+" "+arr.length());
 
                     if(catidxFromDb==catidx){
-                        datax.add(question + "^თარიღი: "+datex+"#მონ." + usersin);
+                        listItems.add(question + "^თარიღი: " + datex + "#მონაწილე " + usersin);
                     }
                 }
 
-                for(String item : datax) {
+                for(String item : listItems) {
+                    try {
+                        Thread.sleep(200);
+                    }catch (Exception e){
+                        Log.i("taskBG", e.toString());
+                    }
                     publishProgress(item);
+
                 }
 
 
@@ -133,14 +140,18 @@ public class tabDemo extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(String... values) {
             adapter.add(values[0]);
+            Log.i("taskBG", " on progress ");
+            count++;
+            setProgress((int) (((double) count / arr.length()) * 10000));
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            setProgressBarVisibility(false);
             Toast.makeText(tabDemo.this, "ჩატვირთვა დასრულდა!", Toast.LENGTH_LONG).show();
-
         }
     }
+
 
     public void gotoeditprofile(View view){
         waitMe();
