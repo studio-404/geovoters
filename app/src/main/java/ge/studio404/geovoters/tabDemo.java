@@ -83,6 +83,7 @@ public class tabDemo extends AppCompatActivity {
             psd.setCancelable(true);
             psd.show();
             ListView giosListView = (ListView)findViewById(R.id.myListView);
+            giosListView.setDivider(null);
             ListAdapter giosListAdapter = new custom_adapter(tabDemo.this, new ArrayList<String>());
             giosListView.setAdapter(giosListAdapter);
             adapter = (ArrayAdapter<String>) giosListView.getAdapter();

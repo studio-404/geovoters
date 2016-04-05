@@ -24,6 +24,8 @@ public class custom_adapter extends ArrayAdapter<String> {
     String member;
 
 
+
+
     public custom_adapter(Context context, ArrayList<String> questions) {
         super(context, R.layout.custom_row, questions);
         mcon = context;
@@ -59,23 +61,34 @@ public class custom_adapter extends ArrayAdapter<String> {
         TextView tarigi = (TextView)convertView.findViewById(R.id.tarigi);
         TextView monawile = (TextView)convertView.findViewById(R.id.monawile);
         TextView itemid = (TextView)convertView.findViewById(R.id.itemid);
-        Button xmismicemaButton = (Button)convertView.findViewById(R.id.xmismicemaButton);
-        xmismicemaButton.setTag(itemIdx);
-        xmismicemaButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                String tags = v.getTag().toString();
-//                Toast.makeText(getContext(), "Wow "+tags, Toast.LENGTH_LONG).show();
-                Intent i = new Intent(mcon, make_a_vote.class);
-                i.putExtra("itemidx",tags);
-                mcon.startActivity(i);
-            }
-        });
+
 
         questionText.setText(text);
         tarigi.setText(date);
         monawile.setText(member);
         itemid.setText("# "+itemIdx);
+
+        final String extraText = text;
+        final String extraDate = date;
+        final String extraMember = member;
+
+        Button xmismicemaButton = (Button)convertView.findViewById(R.id.xmismicemaButton);
+        xmismicemaButton.setTag(itemIdx);
+        xmismicemaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tags = v.getTag().toString();
+                Intent i = new Intent(mcon, make_a_vote.class);
+                i.putExtra("itemidx", tags);
+                i.putExtra("itemQuestion", extraText);
+                i.putExtra("itemMember", extraMember);
+                i.putExtra("itemDate", extraDate);
+                mcon.startActivity(i);
+            }
+        });
+
+
+        //itemid.setText("# "+itemIdx);
 
         return convertView;
     }

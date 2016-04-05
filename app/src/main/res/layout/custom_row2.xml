@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/answerid"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/mainVoteBox"
+        android:layout_alignStart="@+id/mainVoteBox"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:layout_marginRight="10dp" />
+
+    <TextView
+        android:layout_width="400dp"
+        android:layout_height="30dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/mainVoteBox"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:textSize="18sp"
+        android:paddingLeft="10dp"
+        android:layout_below="@+id/answerid"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/persentije"
+        android:id="@+id/answerPercentige"
+        android:layout_alignTop="@+id/mainVoteBox"
+        android:layout_alignLeft="@+id/mainVoteBox"
+        android:layout_alignStart="@+id/mainVoteBox"
+        android:gravity="center_vertical"
+        android:background="#7CB342"
+        android:textColor="#ffffff"
+        android:paddingLeft="10dp" />
+
+</RelativeLayout>

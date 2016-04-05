@@ -72,6 +72,31 @@
             android:textSize="20sp"
             android:textColor="#ffffff" />
 
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/answersListView"
+            android:layout_below="@+id/moreData"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="30dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/moreData"
+            android:layout_below="@+id/mainText"
+            android:layout_alignLeft="@+id/mainText"
+            android:layout_alignStart="@+id/mainText"
+            android:layout_marginRight="10dp"
+            android:background="#ffffff"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
+
 
     </RelativeLayout>
 
