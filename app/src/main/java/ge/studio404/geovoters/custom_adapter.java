@@ -1,13 +1,14 @@
 package ge.studio404.geovoters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -18,10 +19,14 @@ public class custom_adapter extends ArrayAdapter<String> {
     String dateAndMember;
     String text;
     String date;
+    public Context mcon;
+    String lastItemSplitted;
     String member;
+
 
     public custom_adapter(Context context, ArrayList<String> questions) {
         super(context, R.layout.custom_row, questions);
+        mcon = context;
     }
 
     @Override
@@ -29,9 +34,10 @@ public class custom_adapter extends ArrayAdapter<String> {
         if(convertView==null) {
             LayoutInflater giosInflate = LayoutInflater.from(getContext());
             convertView = giosInflate.inflate(R.layout.custom_row, parent, false);
+
         }
         singleText = getItem(position);
-
+        String itemIdx = "";
         try {
             StringTokenizer tokens = new StringTokenizer(singleText, "^");
             while (tokens.hasMoreTokens()) {
@@ -40,7 +46,10 @@ public class custom_adapter extends ArrayAdapter<String> {
                 StringTokenizer tokens2 = new StringTokenizer(dateAndMember, "#");
                 while (tokens2.hasMoreTokens()) {
                     date = tokens2.nextToken();
-                    member = tokens2.nextToken();
+                    lastItemSplitted = tokens2.nextToken();
+                    StringTokenizer tokens3 = new StringTokenizer(lastItemSplitted, "%");
+                    member = tokens3.nextToken();
+                    itemIdx = tokens3.nextToken();
                 }
             }
         } catch (Exception e) {
@@ -49,10 +58,24 @@ public class custom_adapter extends ArrayAdapter<String> {
         TextView questionText = (TextView)convertView.findViewById(R.id.questionText);
         TextView tarigi = (TextView)convertView.findViewById(R.id.tarigi);
         TextView monawile = (TextView)convertView.findViewById(R.id.monawile);
+        TextView itemid = (TextView)convertView.findViewById(R.id.itemid);
+        Button xmismicemaButton = (Button)convertView.findViewById(R.id.xmismicemaButton);
+        xmismicemaButton.setTag(itemIdx);
+        xmismicemaButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                String tags = v.getTag().toString();
+//                Toast.makeText(getContext(), "Wow "+tags, Toast.LENGTH_LONG).show();
+                Intent i = new Intent(mcon, make_a_vote.class);
+                i.putExtra("itemidx",tags);
+                mcon.startActivity(i);
+            }
+        });
 
         questionText.setText(text);
         tarigi.setText(date);
         monawile.setText(member);
+        itemid.setText("# "+itemIdx);
 
         return convertView;
     }

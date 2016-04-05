@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
     public TextView peopleCount;
@@ -18,6 +19,7 @@ public class MainActivity extends Activity {
     boolean mIsReceiverRegistered = false;
     MyBroadcastReceiver mReceiver = null;
     MyDBHandler dbHandler;
+    Button gototabactivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class MainActivity extends Activity {
         peopleCount = (TextView)findViewById(R.id.peopleCount);
         WelcomeText = (TextView)findViewById(R.id.WelcomeText);
         dbHandler = new MyDBHandler(this, "geovote.db", null, 1);
+        gototabactivity = (Button)findViewById(R.id.gototabactivity);
 
         i = new Intent(this, checkWebService.class);
         startService(i);
@@ -70,6 +73,7 @@ public class MainActivity extends Activity {
         String w = intent.getStringExtra("WelcomeText");
         WelcomeText.setText(w);
         peopleCount.setText(s);
+        gototabactivity.setVisibility(View.VISIBLE);
     }
 
     private class MyBroadcastReceiver extends BroadcastReceiver {

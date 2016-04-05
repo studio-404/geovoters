@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -33,7 +32,6 @@ public class tabDemo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_PROGRESS);
         setContentView(R.layout.activity_tab_demo);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -74,16 +72,21 @@ public class tabDemo extends AppCompatActivity {
     class MyTask extends AsyncTask<Integer, String, Void>{
         BufferedReader reader = null;
         StringBuffer buffer;
-        private int count;
         JSONArray arr;
+        ProgressDialog psd;
         @Override
         protected void onPreExecute() {
+            psd = new ProgressDialog(tabDemo.this);
+            psd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            psd.setMessage("გთხოვთ დაიცადოთ...");
+            psd.setIndeterminate(true);
+            psd.setCancelable(true);
+            psd.show();
             ListView giosListView = (ListView)findViewById(R.id.myListView);
             ListAdapter giosListAdapter = new custom_adapter(tabDemo.this, new ArrayList<String>());
             giosListView.setAdapter(giosListAdapter);
-            adapter = (ArrayAdapter<String>)giosListView.getAdapter();
-            setProgressBarIndeterminate(false);
-            setProgressBarVisibility(true);
+            adapter = (ArrayAdapter<String>) giosListView.getAdapter();
+
         }
 
         @Override
@@ -108,23 +111,17 @@ public class tabDemo extends AppCompatActivity {
 
                 for (int i = 0; i < arr.length(); i++) {
                     int catidx = arr.getJSONObject(i).getInt("catidx");
-                    //int idx = arr.getJSONObject(i).getInt("idx");
+                    int idx = arr.getJSONObject(i).getInt("idx");
                     String datex = arr.getJSONObject(i).getString("datex");
                     String question = arr.getJSONObject(i).getString("question");
                     int usersin = arr.getJSONObject(i).getInt("usersin");
-                    Log.i("taskBG", catidxFromDb + " catalogidx "+catidx+" "+arr.length());
 
                     if(catidxFromDb==catidx){
-                        listItems.add(question + "^თარიღი: " + datex + "#მონაწილე " + usersin);
+                        listItems.add(question + "^თარიღი: " + datex + "#მონაწილე " + usersin+"%"+idx);
                     }
                 }
 
                 for(String item : listItems) {
-                    try {
-                        Thread.sleep(200);
-                    }catch (Exception e){
-                        Log.i("taskBG", e.toString());
-                    }
                     publishProgress(item);
 
                 }
@@ -140,15 +137,12 @@ public class tabDemo extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(String... values) {
             adapter.add(values[0]);
-            Log.i("taskBG", " on progress ");
-            count++;
-            setProgress((int) (((double) count / arr.length()) * 10000));
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            setProgressBarVisibility(false);
-            Toast.makeText(tabDemo.this, "ჩატვირთვა დასრულდა!", Toast.LENGTH_LONG).show();
+            psd.hide();
+            Toast.makeText(tabDemo.this, "ჩატვირთვა დასრულდა!", Toast.LENGTH_SHORT).show();
         }
     }
 

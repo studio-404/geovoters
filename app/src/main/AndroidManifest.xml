@@ -31,7 +31,10 @@
             android:name=".profile_activity"
             android:label="@string/title_activity_profile_activity"
             android:theme="@style/AppTheme" />
-
+        <activity
+            android:name=".make_a_vote"
+            android:label="@string/title_activity_make_a_vote"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

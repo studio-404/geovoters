@@ -35,4 +35,9 @@
     <string name="xmismicema">ხმის მიცემა</string>
     <string name="tarigi">თარიღი: 20 თებ 2016</string>
     <string name="monawile">მონაწილე: 205</string>
+    <string name="numberid">#225451</string>
+    <string name="title_activity_make_a_vote">make_a_vote</string>
+    <string name="make_a_vote">ხმის მიცემა</string>
+    <string name="closeButtonText">closeButton</string>
+    <string name="xmismicema2">ხმის მიცემა</string>
 </resources>

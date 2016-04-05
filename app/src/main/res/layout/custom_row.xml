@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="fill_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/questionText"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
         android:background="#ffffff"
-        android:padding="10dp"
-        android:textSize="18sp"
-        android:text="@string/question" />
+        android:textSize="17sp"
+        android:text="@string/question"
+        android:layout_below="@+id/itemid"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="top"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,5 +51,36 @@
         android:layout_marginRight="10dp"
         android:paddingRight="10dp"
         android:paddingLeft="10dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/numberid"
+        android:id="@+id/itemid"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#ffffff"
+        android:textSize="16sp"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="10dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="@string/xmismicema"
+        android:id="@+id/xmismicemaButton"
+        android:layout_below="@+id/tarigi"
+        android:layout_alignLeft="@+id/tarigi"
+        android:layout_alignStart="@+id/tarigi"
+        android:background="#00E5FF"
+        android:textColor="#ffffff"
+        android:layout_marginRight="10dp"
+        android:textSize="17sp"
+        android:layout_marginBottom="10dp" />
 
 </RelativeLayout>
