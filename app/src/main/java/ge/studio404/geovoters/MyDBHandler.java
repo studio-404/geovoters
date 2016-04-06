@@ -19,8 +19,8 @@ public class MyDBHandler extends SQLiteOpenHelper{
         db.execSQL(geovote_users);
         String geovote_cataloglist = "CREATE TABLE IF NOT EXISTS geovote_cataloglist ( id INTEGER PRIMARY KEY AUTOINCREMENT, catalogidx INTEGER, catalogtitle TEXT );";
         db.execSQL(geovote_cataloglist);
-//        String geovote_itemlists = "CREATE TABLE IF NOT EXISTS geovote_itemlists ( id INTEGER PRIMARY KEY AUTOINCREMENT, idx INTEGET, catidx INTEGER, date INTEGER, question TEXT, usersin INTEGER );";
-//        db.execSQL(geovote_itemlists);
+        String geovote_itemlists = "CREATE TABLE IF NOT EXISTS geovote_itemlists_answers ( id INTEGER PRIMARY KEY AUTOINCREMENT, question_id INTEGER, answer_id INTEGER );";
+        db.execSQL(geovote_itemlists);
     }
 
     @Override

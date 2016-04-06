@@ -118,7 +118,7 @@ public class tabDemo extends AppCompatActivity {
                     int usersin = arr.getJSONObject(i).getInt("usersin");
 
                     if(catidxFromDb==catidx){
-                        listItems.add(question + "^თარიღი: " + datex + "#მონაწილე " + usersin+"%"+idx);
+                        listItems.add(question + "^თარიღი: " + datex + "#მონაწილე: " + usersin+"%"+idx);
                     }
                 }
 

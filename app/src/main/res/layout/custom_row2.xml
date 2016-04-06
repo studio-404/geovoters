@@ -20,7 +20,7 @@
         android:layout_height="30dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/mainVoteBox"
-        android:background="#ffffff"
+        android:background="#E0E0E0"
         android:gravity="center_vertical"
         android:textSize="18sp"
         android:paddingLeft="10dp"
@@ -34,14 +34,36 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/persentije"
         android:id="@+id/answerPercentige"
         android:layout_alignTop="@+id/mainVoteBox"
         android:layout_alignLeft="@+id/mainVoteBox"
         android:layout_alignStart="@+id/mainVoteBox"
         android:gravity="center_vertical"
-        android:background="#7CB342"
+        android:background="#4DD0E1"
         android:textColor="#ffffff"
         android:paddingLeft="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/superpersentage"
+        android:layout_alignTop="@+id/mainVoteBox"
+        android:layout_alignLeft="@+id/mainVoteBox"
+        android:layout_alignStart="@+id/mainVoteBox"
+        android:textColor="#ffffff"
+        android:paddingLeft="10dp"
+        android:textSize="16sp"
+        android:gravity="center_vertical" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:id="@+id/makevoteButton"
+        android:layout_alignTop="@+id/mainVoteBox"
+        android:layout_alignLeft="@+id/mainVoteBox"
+        android:layout_alignStart="@+id/mainVoteBox"
+        android:layout_marginRight="10dp"
+        android:alpha="0" />
 
 </RelativeLayout>
