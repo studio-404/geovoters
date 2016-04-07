@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -72,8 +73,7 @@ public class custom_adapter2 extends ArrayAdapter<String> {
         }
 
         TextView answerid = (TextView)convertView.findViewById(R.id.answerid);
-        TextView answerPercentige = (TextView)convertView.findViewById(R.id.answerPercentige);
-        TextView mainVoteBox = (TextView)convertView.findViewById(R.id.mainVoteBox); // 100%
+//        TextView answerPercentige = (TextView)convertView.findViewById(R.id.answerPercentige);
         TextView superpersentage = (TextView) convertView.findViewById(R.id.superpersentage);
         makevoteButton = (Button) convertView.findViewById(R.id.makevoteButton);
         makevoteButton.setTag(itemIdx);
@@ -86,14 +86,10 @@ public class custom_adapter2 extends ArrayAdapter<String> {
                 new RetrieveFeedTask().execute(answer_id);
             }
         });
-        int getWidth = mainVoteBox.getLayoutParams().width;
 
-
-        int misus = (getWidth / 400) * 20;
-        answerPercentige.getLayoutParams().width = ((getWidth * Integer.parseInt(answerPercentigeString)) / 100) - misus;
 
         answerid.setText(answeridString);
-        answerPercentige.setText("");
+//        answerPercentige.setText("");
         superpersentage.setText(answerPercentigeString + "%");
 
         return convertView;

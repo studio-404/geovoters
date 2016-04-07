@@ -3,67 +3,42 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/answerid"
+        android:textSize="18sp"
         android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/mainVoteBox"
-        android:layout_alignStart="@+id/mainVoteBox"
-        android:layout_marginTop="10dp"
-        android:textSize="18sp"
-        android:layout_marginRight="10dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp" />
 
     <TextView
-        android:layout_width="400dp"
-        android:layout_height="30dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/mainVoteBox"
-        android:background="#E0E0E0"
-        android:gravity="center_vertical"
-        android:textSize="18sp"
-        android:paddingLeft="10dp"
-        android:layout_below="@+id/answerid"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/answerPercentige"
-        android:layout_alignTop="@+id/mainVoteBox"
-        android:layout_alignLeft="@+id/mainVoteBox"
-        android:layout_alignStart="@+id/mainVoteBox"
-        android:gravity="center_vertical"
-        android:background="#4DD0E1"
-        android:textColor="#ffffff"
-        android:paddingLeft="10dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/superpersentage"
-        android:layout_alignTop="@+id/mainVoteBox"
-        android:layout_alignLeft="@+id/mainVoteBox"
-        android:layout_alignStart="@+id/mainVoteBox"
-        android:textColor="#ffffff"
+        android:textColor="#00BCD4"
         android:paddingLeft="10dp"
-        android:textSize="16sp"
-        android:gravity="center_vertical" />
+        android:textSize="20sp"
+        android:gravity="left|center_vertical"
+        android:layout_below="@+id/answerid"
+        android:layout_alignLeft="@+id/answerid"
+        android:layout_alignStart="@+id/answerid" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
         android:id="@+id/makevoteButton"
-        android:layout_alignTop="@+id/mainVoteBox"
-        android:layout_alignLeft="@+id/mainVoteBox"
-        android:layout_alignStart="@+id/mainVoteBox"
-        android:layout_marginRight="10dp"
-        android:alpha="0" />
+        android:textColor="#ffffff"
+        android:background="#00BCD4"
+        android:layout_alignTop="@+id/superpersentage"
+        android:layout_alignRight="@+id/answerid"
+        android:layout_alignEnd="@+id/answerid"
+        android:text="@string/xmismicemaxx"
+        android:textSize="16sp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
 
 </RelativeLayout>
